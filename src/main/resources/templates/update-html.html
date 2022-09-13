@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Update User</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <h3> Update Client</h3>
+
+        <form action="#" th:action="@{/clients/update/{id}(id=${client.id})}" th:object="${client}" method="post">
+              <label for="name">Name</label> <input type="text" th:field="*{name}" id="name" placeholder="Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+
+              <label for="email" class="col-form-label">Email</label> <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email"> <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+
+
+              <label for="phone">Phone</label> <input type="text" th:field="*{phone}"  id="phone" placeholder="phone"> <span th:if="${#fields.hasErrors('phone')}" th:errors="phone" ></span>
+
+              <input type="submit" value="Update Client">
+
+
+        </form>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div>
+    <div>
+        <div>
+            <div th:switch="${clients}">
+                <p class="my-5">
+                    <a href="/clients/signup">
+                             Add Client</a>
+                </p>
+                <div>
+                    <h2 th:case="null">Nenhum client ainda!</h2>
+                    <div th:case="*">
+                        <table >
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone No</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="client : ${clients}">
+                                <td th:text="${client.name}"></td>
+                                <td th:text="${client.email}"></td>
+                                <td th:text="${client.phone}"></td>
+                                <td><a th:href="@{/clieents/edit/{id}(id=${client.id})}"</a></td>
+                                <td><a th:href="@{/clients/delete/{id}(id=${client.id})}"</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
