@@ -9,36 +9,33 @@
 </head>
 
 <body>
-    <div th:switch="${clients}">
-        <p>
-            <a href="/clients/signup">Adicionar Cliente</a>
-        </p>
-
-            <h2 th:case="null">Nenhum cliente ainda!</h2>
-            <div th:case="*">
-                <table >
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="client : ${clients}">
-                        <td th:text="${client.name}"></td>
-                        <td th:text="${client.email}"></td>
-                        <td th:text="${client.phone}"></td>
-                        <td><a th:href="@{/clients/edit/{id}(id=${client.id})}"></a></td>
-                        <td><a th:href="@{/clients/delete/{id}(id=${client.id})}"></a></td>
-                    </tr>
-                    </tbody>
-                </table>
-                    </div>
-            </div>
-
+<div th:switch="${clients}">
+    <p>
+        <a href="/clients/">Adicionar Cliente</a>
+    </p>
+    <h2 th:case="null">Nenhum cliente ainda!</h2>
+    <div th:case="*">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="client : ${clients}">
+                    <td th:text="${client.name}"></td>
+                    <td th:text="${client.email}"></td>
+                    <td th:text="${client.phone}"></td>
+                    <td><a th:href="@{/clients/{id}(id=${client.id})}">Editar</a></td>
+                    <td><a th:href="@{/clients/delete/{id}(id=${client.id})}">Deletar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
-
 </html>
