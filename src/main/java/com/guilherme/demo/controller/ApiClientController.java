@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/clients")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ApiClientController {
 
     @Autowired private ClientService clientService;
@@ -28,7 +29,7 @@ public class ApiClientController {
     }
 
     @PostMapping
-    public Client processForm(@Valid Client client) {
+    public Client processForm(@Valid @RequestBody Client client) {
         return clientService.save( client );
     }
 
